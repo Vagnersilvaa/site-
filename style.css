@@ -120,9 +120,11 @@ footer {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Centralizada no início */
   z-index: 10000;
+  cursor: grab; /* Mãozinha para mostrar que dá pra arrastar */
 }
+
 
 .envelope {
   width: 300px;
@@ -179,3 +181,23 @@ footer {
     font-size: 0.9em;
   }
 }
+
+.mensagens-fixas {
+  max-width: 700px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 1.3em;
+}
+
+.mensagens-fixas h2 {
+  margin-bottom: 15px;
+  color: #ffb6c1;
+}
+
+.mensagens-fixas p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
