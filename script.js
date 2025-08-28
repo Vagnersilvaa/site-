@@ -40,13 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
       `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
   }
 
-  atualizarContador(); // atualizar imediatamente ao carregar
-  setInterval(atualizarContador, 1000); // atualizar a cada segundo
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
 
   // ============================
   // Mensagem de amor aleatória na cartinha
   // ============================
   const mensagens = [
+    "Feliz 1 ano de nós dois! 💖🎉",
+    "Feliz aniversário, meu amor! 🎂💐",
     "Amor, eu te amo mais a cada dia! 💖",
     "Você é a razão do meu sorriso todos os dias 😍",
     "Meu coração é seu para sempre ❤️",
@@ -72,3 +74,32 @@ document.addEventListener("DOMContentLoaded", () => {
     cartinha.style.display = "none";
   });
 });
+
+// ============================
+// Tornar a cartinha arrastável
+// ============================
+const cartinha = document.getElementById("cartinha");
+
+let isDragging = false;
+let offsetX, offsetY;
+
+cartinha.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - cartinha.offsetLeft;
+  offsetY = e.clientY - cartinha.offsetTop;
+  cartinha.style.cursor = "grabbing";
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (isDragging) {
+    cartinha.style.left = e.clientX - offsetX + "px";
+    cartinha.style.top = e.clientY - offsetY + "px";
+    cartinha.style.transform = "none"; // desativa o translate fixo
+  }
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+  cartinha.style.cursor = "grab";
+});
+
