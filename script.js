@@ -109,17 +109,19 @@ cartinha.addEventListener("touchstart", (e) => {
   isDragging = true;
   offsetX = e.touches[0].clientX - cartinha.offsetLeft;
   offsetY = e.touches[0].clientY - cartinha.offsetTop;
-}, { passive: true });
+  cartinha.style.cursor = "grabbing";
+}, { passive: false });
 
 document.addEventListener("touchmove", (e) => {
   if (isDragging) {
+    e.preventDefault(); // impede a tela de rolar
     cartinha.style.left = e.touches[0].clientX - offsetX + "px";
     cartinha.style.top = e.touches[0].clientY - offsetY + "px";
     cartinha.style.transform = "none";
   }
-}, { passive: true });
+}, { passive: false });
 
 document.addEventListener("touchend", () => {
   isDragging = false;
+  cartinha.style.cursor = "grab";
 });
-
