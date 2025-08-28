@@ -1,0 +1,181 @@
+/* ========================== */
+/* Estilo Geral do Site       */
+/* ========================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #8B0000; /* vermelho escuro */
+  color: white;
+  text-align: center;
+  line-height: 1.6em;
+}
+
+header {
+  padding: 30px 15px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+main {
+  padding: 15px;
+}
+
+section {
+  margin: 30px 0;
+}
+
+.mensagem {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.mensagem h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+/* ========================== */
+/* Galeria de fotos e vídeos  */
+/* ========================== */
+.galeria .grid,
+.videos .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.galeria img,
+.videos video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.galeria img:hover,
+.videos video:hover {
+  transform: scale(1.05);
+}
+
+/* ========================== */
+/* Footer                     */
+/* ========================== */
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(0,0,0,0.5);
+  font-size: 1em;
+}
+
+/* ========================== */
+/* Corações Flutuantes        */
+/* ========================== */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  color: #ff69b4;
+  font-size: 20px;
+  animation: floatUp 6s linear forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========================== */
+/* Contador                   */
+/* ========================== */
+.contador {
+  margin: 30px 0;
+  font-size: 1.3em;
+  color: #fff;
+}
+
+/* ========================== */
+/* Cartinha/Envelope          */
+/* ========================== */
+#cartinha {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.envelope {
+  width: 300px;
+  height: 200px;
+  background: #fff0f5;
+  border: 2px solid #ff69b4;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  cursor: pointer;
+  animation: abrirEnvelope 1s ease forwards;
+}
+
+.carta h2 {
+  margin: 0;
+  color: #ff1493;
+}
+
+.carta p {
+  margin-top: 10px;
+  color: #8b0000;
+}
+
+@keyframes abrirEnvelope {
+  0% { transform: translate(-50%, -50%) scale(0); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ========================== */
+/* Responsividade Mobile       */
+/* ========================== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  header p,
+  .mensagem p {
+    font-size: 1em;
+  }
+
+  .mensagem {
+    padding: 12px;
+    font-size: 1em;
+  }
+
+  .galeria .grid,
+  .videos .grid {
+    grid-template-columns: 1fr; /* uma coluna no celular */
+  }
+
+  footer {
+    font-size: 0.9em;
+  }
+}
