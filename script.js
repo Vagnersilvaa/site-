@@ -76,13 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ============================
-// Tornar a cartinha arrastável
+// Tornar a cartinha arrastável (PC + Celular)
 // ============================
 const cartinha = document.getElementById("cartinha");
 
 let isDragging = false;
 let offsetX, offsetY;
 
+// --- PC (mouse) ---
 cartinha.addEventListener("mousedown", (e) => {
   isDragging = true;
   offsetX = e.clientX - cartinha.offsetLeft;
@@ -94,12 +95,31 @@ document.addEventListener("mousemove", (e) => {
   if (isDragging) {
     cartinha.style.left = e.clientX - offsetX + "px";
     cartinha.style.top = e.clientY - offsetY + "px";
-    cartinha.style.transform = "none"; // desativa o translate fixo
+    cartinha.style.transform = "none";
   }
 });
 
 document.addEventListener("mouseup", () => {
   isDragging = false;
   cartinha.style.cursor = "grab";
+});
+
+// --- Celular (toque) ---
+cartinha.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  offsetX = e.touches[0].clientX - cartinha.offsetLeft;
+  offsetY = e.touches[0].clientY - cartinha.offsetTop;
+}, { passive: true });
+
+document.addEventListener("touchmove", (e) => {
+  if (isDragging) {
+    cartinha.style.left = e.touches[0].clientX - offsetX + "px";
+    cartinha.style.top = e.touches[0].clientY - offsetY + "px";
+    cartinha.style.transform = "none";
+  }
+}, { passive: true });
+
+document.addEventListener("touchend", () => {
+  isDragging = false;
 });
 
